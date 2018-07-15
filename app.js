@@ -17,7 +17,20 @@ app.directive('fileReader', function() {
           r.onload = function(e) {
               var contents = e.target.result;
 			  scope.$apply(function () {
-                scope.fileReader = contents.split("\n");
+				var rows = contents.split("\n");
+				var size = rows.length;
+				var records = [];
+				for (var i = 1; i < size; i++) {
+					var line = rows[i].split(",");
+					var record = {};
+					record.firstName = line[0].substr(1).slice(0, -1);
+					record.surName = line[1].substr(1).slice(0, -1);
+					record.issueCount = line[2];
+					record.dateOfBirth = line[3].substr(1).slice(0, -1);
+					records.push(record);
+				}
+                scope.fileReader = records;
+				
               });
           };          
           r.readAsText(files[0]);

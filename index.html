@@ -14,8 +14,15 @@
     <input type="file" file-reader="fileContent" />
     <div ng-if="fileContent" class="content">
 	    <table border="1">
+			<th>First Name</th>
+			<th>Sur Name</th>
+			<th>Issues Count</th>
+			<th>Date of birth</th>
             <tr ng-repeat="row in fileContent  track by $index" >
-                <td>{{row}}</td>
+                <td>{{row.firstName}}</td>
+				<td>{{row.surName}}</td>
+				<td>{{row.issueCount}}</td>
+				<td>{{row.dateOfBirth}}</td>
             </tr>
         </table>
     </div>
