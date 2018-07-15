@@ -1,0 +1,25 @@
+<html ng-app="showReportsApp">
+<title>
+	Rabobank Reports
+</title>
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="lib\angular.min.js"></script>
+	<script src=".\app.js"></script>
+</head>
+<body>
+
+<div ng-controller="MainCtrl">
+    <h1>{{title}}</h1>
+    <input type="file" file-reader="fileContent" />
+    <div ng-if="fileContent" class="content">
+	    <table border="1">
+            <tr ng-repeat="row in fileContent  track by $index" >
+                <td>{{row}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+<html>
